@@ -1,0 +1,14 @@
+[Unit]
+Description=DataActKit EU Data Act (Regulation (EU) 2023/2854) Switching Clock, EUR 0 Egress 2027 & IoT Checker
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/dataactkit
+EnvironmentFile=/etc/dataactkit/.env
+ExecStart=/usr/bin/node --no-warnings /opt/dataactkit/server/index.mjs
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

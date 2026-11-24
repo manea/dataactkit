@@ -1,0 +1,21 @@
+services:
+  dataactkit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dataactkit
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4217:4217"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4217
+      DATAACTKIT_DATA_DIR: /app/data
+      BASE_PATH: ${BASE_PATH:-}
+      APP_ORIGIN: ${APP_ORIGIN:-}
+    volumes:
+      - dataactkit_data:/app/data
+
+volumes:
+  dataactkit_data:
